@@ -14,3 +14,10 @@
 
 ![3](picture\3.png)
 
+## 2019-1-13
+
+设置编译时忽略其他类的错误
+
+1. 设置——Build, Excution, Deployment——Compiler——Java Compiler——Use compiler，选择Eclipse
+2. 要运行的文件，选择Edit Configurations——Before launch: Build, Activate tool window，移除Build
+3. 运行完成后，恢复原样

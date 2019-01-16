@@ -1,4 +1,6 @@
-# node.js安装
+# node.js
+
+## node.js安装
 
 1. GitHub上找到nvm-windows，下载nvm-setup
 
@@ -49,6 +51,35 @@
    ```shell
    npm install -g @vue/cli
    vue --version
+   npm install -g @vue/cli-init
    ```
 
-10. 
+
+
+
+## 项目的打包和发布
+
+打包
+
+```shell
+npm run build
+```
+
+发布
+
+- 静态服务器
+
+  ```shell
+  npm install -g serve
+  serve dist 	//启动服务器
+  ```
+
+- 动态web服务（tomcat）
+
+  修改webpack.prod.conf.js配置
+
+  ```javascript
+  output: {
+      publicPath: '/vue_demo/'
+  }
+  ```
