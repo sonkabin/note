@@ -434,6 +434,8 @@ export default new VueRouter({
 
 ## vuex
 
+作用：多组件共享状态
+
 下载
 
 ```shell
@@ -508,6 +510,7 @@ export default new Vuex.Store({
 <p>click {{count}} times, count is {{oddOrEven}}</p>
 
 computed: {
+    // mapState()是一个函数
     ...mapState(['count']),
     ...mapGetters(['oddOrEven'])
     /*oddOrEven () {
@@ -522,5 +525,29 @@ methods: {
       this.$store.dispatch('increment')
     }
 }*/
+```
+
+
+
+**commit的方法传递的数据要用对象包起来** 
+
+```javascript
+add_todo ({commit}, todo) {
+	commit(ADD_TODO, {todo})
+}
+//mutations中要对应包成对象
+ADD_TODO (state, {todo}) { // 默认是字符串，即等价于'ADD_TODO'，要想把它变成变量，用[]把它包起来
+    state.todos.unshift(todo)
+}
+```
+
+
+
+**getters**：接收state作为第一个参数，也可以接收其他getter作为第二个参数
+
+```javascript
+isAllComplete (state, getters) {
+    return getters.completeCount === getters.totalCount && state.todos.length > 0
+}
 ```
 
