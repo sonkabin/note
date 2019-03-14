@@ -378,4 +378,9 @@ java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax;
   - Requires New：每个方法创建自己的物理事务，可以设置自己的隔离级别、超时、只读设置，也可以独立决定提交还是回滚
   - Nested：使用一个有多个能回滚的储存点的物理事务，因此部分内部事务回滚，外部事务仍旧继续执行。因为该设置要映射到JDBC的储存点，因此只能在有JDBC resource transactions的情况下工作。请看Spring的DataSourceTransactionManager
 
-- 
+
+## 数据库连接池的时区问题
+
+一开始在jdbc中的参数为serverTimezone=UTC，因为不加时区无法启动连接池。然后问题出现了：在对某时间段进行过滤时，选择的当天不会被查询到，发现发送的sql语句是选择的日期的前一天。因为只有UTC，可能解析为零时区了，故不行。。后改成serverTimezone=GMT%2B8就成功了，其中`%2B表示+号`
+
+**测试：改成UTC+8是否可行？**结论：不行。UTC代表的是全球标准时间
