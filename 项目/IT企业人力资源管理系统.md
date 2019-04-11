@@ -80,7 +80,7 @@
     ```
     转换成MyBatis语法
     ```java
-    Map<String, Object> selectPortion(List<Employee> employees);
+    List<Map<String, Object>> selectPortion(List<Employee> employees);
     ```
     ```xml
     <!-- 对应的mapper.xml文件 -->
@@ -251,6 +251,33 @@ $('#checkbox-node').prop("checked", true)
 
 
 
+字符串转数字
+
+```js
+parseInt()和parseFloat()
+```
+
+
+
+关于attr
+
+```javascript
+// 当用js操作attr时，注意不要与HMTL的已有属性混淆
+// 如下的代码是由问题的
+function A() {
+    $('#save-btn').attr('id', id)
+}
+function B() {
+    // 获得属性，以进行其他操作
+    $('#save-btn').attr('id')
+}
+// 错误在于想为id=save-btn的按钮绑定id，导致出现出乎预料的结果
+```
+
+
+
+
+
 ## 注解
 
 注解可以多个标注在一个参数/方法/类上
@@ -384,3 +411,11 @@ java.sql.SQLSyntaxErrorException: You have an error in your SQL syntax;
 一开始在jdbc中的参数为serverTimezone=UTC，因为不加时区无法启动连接池。然后问题出现了：在对某时间段进行过滤时，选择的当天不会被查询到，发现发送的sql语句是选择的日期的前一天。因为只有UTC，可能解析为零时区了，故不行。。后改成serverTimezone=GMT%2B8就成功了，其中`%2B表示+号`
 
 **测试：改成UTC+8是否可行？**结论：不行。UTC代表的是全球标准时间
+
+## Java
+
+### 对象拷贝问题
+
+参考书目《Effective Java（英文版）第二版》Page61
+
+使用构造器或静态工厂实现对象拷贝，而不是用Cloneable接口

@@ -9,7 +9,7 @@
 5. Ubuntu安装ssh服务    `sudo apt-get install openssh-server`
 6. 注意Ubuntu禁止root远程登陆
 7. 使用ssh客户端连接
-8. Ubuntu使用命令   `sudo apt install docker.io`
+8. Ubuntu使用命令   `sudo apt install docker.io`，过时。使用docker-ce比较好，具体参照官方文档
 
 ## 启动docker
 
@@ -22,8 +22,6 @@ service docker start
 [阿里云docker镜像](https://www.cnblogs.com/anliven/p/6218741.html)
 
 ## docker常用操作
-
-检索
 
 ```shell
 1.检索
@@ -43,7 +41,8 @@ sudo docker ps -a
 8.删除容器（容器必须停止）
 sudo docker rm 容器id
 9.启动一个做了端口映射的容器
-sudo docker run --name mytomcat -d -p 8888:8080 tomcat
+sudo docker run -h tom --name mytomcat -d -p 8888:8080 tomcat
+-h：指定主机名称
 --name:指定容器名，可以不指定
 -d:后台运行
 -p:主机端口：容器端口
@@ -51,7 +50,36 @@ sudo docker run --name mytomcat -d -p 8888:8080 tomcat
 sudo ufw status
 sudo ufw enable
 sudo ufw disable
-11.查看容器日志
+```
+
+```shell
+1. 运行操作系统，如Ubuntu
+sudo docker run -it ubuntu
+-i:以交互方式运行
+-t:打开伪终端
+1.1 退出容器
+exit：容器停止退出
+ctrl+P+Q：容器不停止退出
+2. 查看容器
+sudo docker ps 查看运行中的容器
+sudo docker ps -l 查看上一次运行的容器
+sudo docker ps -n num 查看最近的num个容器
+3.查看容器日志
 sudo docker logs 容器名/容器id
+-t：打印时间
+-f：跟随最新的日志打印
+--tail num：打印最后num条
+4. 查看容器内部细节
+sudo docker inspect 容器id
+5. 进入容器以命令行交互
+sudo docker attach 容器id：直接进入容器启动命令的终端，不启动新的进程
+sudo docker exec -it 容器id bashShell：
+e.g.
+sudo docker exec -it 2b598045c316 ls /tmp：直接打印tmp目录，然后返回到宿主机终端
+sudo docker exec -it 2b598045c316 /bin/bash：此时效果类似与attach
+6. 容器中的文件拷贝到宿主机中
+sudo docker cp 容器id:文件位置 宿主机文件位置
+7. 提交容器副本使之成为新的镜像
+sudo docker commit -m="信息" -a="作者" 容器id 要创建的目标镜像名:tag
 ```
 
