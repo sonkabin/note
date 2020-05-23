@@ -210,7 +210,7 @@ public ResponseEntity<byte[]> download (@PathVariable("id") Integer id) throws I
 
 ## js
 
-函数
+### 函数
 
 ```javascript
 // parents()和parent()方法不同
@@ -220,16 +220,7 @@ $(this).parent() // 一个一个找
 $(this).find('td:eq(0)') // 找第一个td节点
 ```
 
-全局变量
-
-```javascript
-// 方式一：使用var，定义在function外面
-var test
-
-// 方式二：没有使用var，直接给标识符test赋值，这样会隐式的声明了全局变量test。即使该语句是在一个function内，当该function被执行后test变成了全局变量。
-test = 5 // 这种其实是在global下创建一个property
-```
-
+#### 数组函数
 删除数组元素
 
 ```javascript
@@ -241,6 +232,52 @@ var a = [1,2,3]
 */
 ```
 
+#### 字符串转数字
+
+```js
+parseInt()和parseFloat()
+```
+
+#### 数组、字符串相互转换
+
+```js
+// 数组转字符串
+array = new Array(1,2,3)
+b = array.join(',') // 1,2,3
+b = array.join('-') // 1-2-3
+// 字符串转数组
+array = b.split(',')
+```
+
+#### map()
+
+```javascript
+paper.map(function(v, i){ // v表示值，i表示索引
+    ids += v.id + ','
+})
+```
+
+#### click函数可以写在函数中
+
+```javascript
+function a() {
+    $('#foo').click(function(){
+        // ...
+    })
+}
+```
+
+
+
+### 全局变量
+
+```javascript
+// 方式一：使用var，定义在function外面
+var test
+
+// 方式二：没有使用var，直接给标识符test赋值，这样会隐式的声明了全局变量test。即使该语句是在一个function内，当该function被执行后test变成了全局变量。
+test = 5 // 这种其实是在global下创建一个property
+```
 
 
 选中checkbox
@@ -251,15 +288,7 @@ $('#checkbox-node').prop("checked", true)
 
 
 
-字符串转数字
-
-```js
-parseInt()和parseFloat()
-```
-
-
-
-关于attr
+### 关于attr
 
 ```javascript
 // 当用js操作attr时，注意不要与HMTL的已有属性混淆
@@ -274,7 +303,14 @@ function B() {
 // 错误在于想为id=save-btn的按钮绑定id，导致出现出乎预料的结果
 ```
 
+### 元素的隐藏与展示
 
+```javascript
+document.getElementById(id).style.visibility = "hidden";
+document.getElementById(id).style.visibility = "visible";
+```
+
+[StackOverflow js hide/show element](<https://stackoverflow.com/questions/6242976/javascript-hide-show-element>)
 
 
 
