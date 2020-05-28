@@ -166,3 +166,32 @@ while(++i < n){
 ## 不要浮躁
 
 仔细考虑边界问题，特殊测试用例
+
+## dp不是只有一维dp，二维甚至高维dp都有可能出现
+
+## 状态压缩相关
+
+一个数组中只有[0-9]的数字，判断每个数字出现次数是奇数还是偶数
+
+```java
+// 使用一个数字来压缩状态
+int s = 0;
+for(int i = 0; i < nums.length; i++){
+    s ^= (1 << nums[i]);
+}
+```
+
+[题目1：其中的2也用到了状态压缩](数据结构和算法/前缀和.md)
+
+[题目2：二叉树中的伪回文路径](<https://leetcode-cn.com/problems/pseudo-palindromic-paths-in-a-binary-tree/>)
+
+## Arryas.asList
+
+```java
+int[] nums = {1,2,3,4};
+Arrays.asList(nums); // 结果为只存放一个元素（为数组）的List
+Integer[] nums2 = {1,2,3,4};
+Arrays.asList(nums2); // 结果正确
+// 因为Arrays.asList的函数签名为 T..a，而int[]是引用类型, int是基本类型，所以不会展开
+```
+
