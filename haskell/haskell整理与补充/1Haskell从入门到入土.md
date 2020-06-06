@@ -6,7 +6,7 @@
 
 打开ghc交互模式，输入`ghci`进入命令行，输入`:q`退出
 
-`Prelude`在输入什么后会变长，所以输入`:set prompt ghci>`比较好
+`Prelude`在输入什么后会变长，所以输入`:set prompt "ghci> "`比较好
 
 在ghci下，我们可以使用let关键字来定义一个常量。在ghci下执行`let a =1`与在脚本中编写a=1是等价的
 
@@ -15,6 +15,8 @@ Haskell是静态类型、惰性的编程语言
 函数式编程最大的特点是：不是告诉程序怎么做，而是告诉程序**问题是什么**
 
 不能用Tab来缩进，只能用空格
+
+
 
 ## 函数
 
@@ -131,9 +133,86 @@ replicate 3 10 等价于 [10,10,10]
    [(a, b, c) | a <- [1..10], b <- [1..10], c <- [1..10], a^2 + b^2 == c^2, a < b, b < c, a+b+c == 24]
    ```
 
+## 补充知识
 
-## Q&A
+使用`:info`查看某个操作符的优先级（1最低，9最高）和结合性（infixl：左结合；infixr：右结合）
 
-1. `5 /= 5`是False, 而`5 /= 其他`都是True，所以`/=`是什么？ 
+```haskell
+ghci> :info (+)
+class Num a where
+  (+) :: a -> a -> a
+  ...
+        -- Defined in ‘GHC.Num’
+infixl 6 +
+```
 
-   答：不等于
+
+
+`^`是对于整数的，浮点数作为指数需要用`**`
+
+```haskell
+ghci> let e = exp 1
+ghci> e ** pi - pi
+19.99909997918947
+```
+
+
+
+分数，此外`:set +t`和`:unset +t`，显示和隐藏类型
+
+```haskell
+ghci> :set +t
+ghci> :m Data.Ratio
+ghci> 18 % 7
+18 % 7
+it :: Integral a => Ratio a
+```
+
+
+
+## 练习
+
+1. 统计行数
+
+   保存为WC.hs
+
+   ```haskell
+   main = interact wordCount
+       where wordCount input = show (length (lines input)) ++ "\n"
+   ```
+
+   
+
+   新建a.txt，内容为
+
+   ```
+   Teignmouth, England
+   Paris, France
+   Ulm, Germany
+   Auxerre, France
+   Brunswick, Germany
+   Beaumont-en-Auge, France
+   Ryazan, Russia
+   ```
+
+   
+
+   在shell执行`runghc WC <  a.txt`
+
+2. 修改例子`WC.hs`，使得可以计算一个文件中的单词个数
+
+   ```haskell
+   main = interact wordCount
+     where wordCount input = show (length $ words input) ++ "\n"
+   ```
+
+   
+
+3. 再次修改`WC.hs`，可以输出一个文件的字符个数
+
+   ```haskell
+   main = interact wordCount
+     where wordCount input = show (length input) ++ "\n"
+   ```
+
+   
