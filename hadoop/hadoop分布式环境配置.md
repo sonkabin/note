@@ -222,25 +222,9 @@ export CLASS_PATH=${CLASS_PATH}:.:${JAVA_HOME}/lib
    9. 配置yarn-site.xml文件（该文件配置正确）
 
       ```xml
-      <property>
+      		<property>
                       <name>yarn.resourcemanager.hostname</name>
                       <value>namenode</value>
-              </property>
-              <property>
-                      <name>yarn.resourcemanager.address</name>
-                      <value>namenode:8030</value>
-              </property>
-              <property>
-                      <name>yarn.resourcemanager.scheduler.address</name>
-                      <value>namenode:8031</value>
-              </property>
-              <property>
-                      <name>yarn.resourcemanager.resource-tracker.address</name>
-                      <value>namenode:8032</value>
-              </property>
-              <property>
-                      <name>yarn.resourcemanager.admin.address</name>
-                      <value>namenode:8033</value>
               </property>
               <property>
                       <name>yarn.nodemanager.aux-services</name>
@@ -250,15 +234,11 @@ export CLASS_PATH=${CLASS_PATH}:.:${JAVA_HOME}/lib
                       <name>yarn.nodemanager.vmem-check-enabled</name>
                       <value>false</value>
               </property>
-              <property>
-                      <name>yarn.nodemanager.aux-services.mapreduce.shuffle.class</name>
-                      <value>org.apache.hadoop.mapred.ShuffleHandler</value>
-              </property>
       
       ```
-
+      
    10. 修改hadoop所属用户与用户组
-
+   
        `sudo chown -R skb:skb hadoop-3.2.1/`
 
 ## 建立分布式集群
