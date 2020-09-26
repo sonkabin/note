@@ -200,8 +200,15 @@ Arrays.asList(nums2); // 结果正确
 ## int和long的溢出
 
 ```java
-System.out.println(Math.log10(Integer.MAX_VALUE)); // 10^9  + C
+System.out.println(Math.log10(Integer.MAX_VALUE)); //  10^9 + C
 System.out.println(Math.log10(Long.MAX_VALUE)); //    10^18 + C
 ```
 
 当m=10^5, nums[i] =  [1,10^7]时，结果为10^12，不会溢出long
+
+
+
+## 回溯
+
+回溯算法首先需要根据问题**确定解的空间**
+
