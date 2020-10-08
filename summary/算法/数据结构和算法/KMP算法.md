@@ -6,6 +6,30 @@
 
 ## 内容
 
+更新next数组
+
+```c++
+const int N = 10010;
+int ne[N]; // ne[i]表示以i为终点的后缀数组与以第一个字符为起点的前缀数组相同时，最大的长度
+char pat[N], s[N];
+void init(){
+    for(int i = 1, j = -1; i < n; i++){ // i从1开始是因为第一个字符退无可退
+        while(j > -1 && pat[i] != pat[j + 1])	j = ne[j]; // i是与j+1的字符进行匹配的，尝试让j回退直到能匹配或者j退无可退
+        if(pat[i] == pat[j + 1])	j++;
+        ne[i] = j;
+    }
+}
+int match(){
+    for(int i = 0, j = -1; i < m; i++){
+        while(j > -1 && s[i] != pat[j + 1])	j = ne[j];
+        if(s[i] == pat[j + 1])	j++;
+        if(i == n - 1){
+            return i - n + 1;
+        }
+    }
+}
+```
+
 ### 通过有限状态自动机（DFA）确定模式的状态
 
 该部分内容请将j理解为**状态**而不是下标
