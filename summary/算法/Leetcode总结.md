@@ -215,3 +215,10 @@ System.out.println(Math.log10(Long.MAX_VALUE)); //    10^18 + C
 ## 返回结果
 
 **返回下标与返回元素值的做法是不同的**。返回下标表示一定不能排序，因此可能用到map，返回元素值是可以排序的
+
+
+
+## 棋盘
+
+棋盘的一个非常容易让人迷惑的点就是用格子的哪部分来代表这个格子（常见的是用右下角，题目有[棋盘分割](https://www.acwing.com/problem/content/323/)、[电路维修](https://www.acwing.com/problem/content/177/)）
+
