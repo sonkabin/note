@@ -222,3 +222,8 @@ System.out.println(Math.log10(Long.MAX_VALUE)); //    10^18 + C
 
 棋盘的一个非常容易让人迷惑的点就是用格子的哪部分来代表这个格子（常见的是用右下角，题目有[棋盘分割](https://www.acwing.com/problem/content/323/)、[电路维修](https://www.acwing.com/problem/content/177/)）
 
+
+
+## 时间上限
+
+直接看成10^8即可
