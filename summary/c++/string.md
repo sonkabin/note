@@ -20,3 +20,8 @@ for(auto c : s){
 }
 ```
 
+## substr
+
+1. substr(start)
+2. substr(start, len)
+

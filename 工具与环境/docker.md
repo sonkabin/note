@@ -83,6 +83,10 @@ sudo docker cp 容器id:文件位置 宿主机文件位置
 sudo docker commit -m="信息" -a="作者" 容器id 要创建的目标镜像名:tag
 8. 命令组合
 sudo docker rm $(sudo docker ps -aq)：删除所有容器
+9. 容器随着系统启动而启动
+sudo docker update mysql --restart=always
+sudo docker update redis --restart=always
+sudo docker update sec-mq --restart=always
 ```
 
 ## 容器数据卷
